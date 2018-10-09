@@ -14,15 +14,15 @@ iris[c(149,150),c(4,5)] #Row,column--the last two rows are 149 and 150 while the
 count(iris,Species) #First the data and then indicate the variable to group the characters by for counting
 
 #Rows with sepal length greater than 3.5
-subset(iris,Sepal.Width>3.5) #Keeps only the data with iris fitting the logic Sepal.Width>3.5
+iris[iris$Sepal.Width>3.5,] #Keeps only the data with iris fitting the logic Sepal.Width>3.5
 
 #Make setosa.csv
-setosa<-subset(iris,Species=="setosa") #Create a data frame of just the setosa species
+setosa<-iris[iris$Species=="setosa",] #Create a data frame of just the setosa species
 write.csv(setosa, "setosa.csv") #Write to a csv, will automatically go to the pwd
 
 #Mean, min, and max Petal.Length for virginica
-subset(iris,Species=="virginica")%>% #Want to work with only the virginica species
-  summarise(Mean=mean(Petal.Length), #leaves just the new created variables, the first Mean is calculated by mean
+virginica<-iris[iris$Species=="virginica",] #Want to work with only the virginica species
+summarise(virginica,Mean=mean(Petal.Length), #leaves just the new created variables, the first Mean is calculated by mean
             Min=min(Petal.Length), #min calculates the min and sets it equal to Min
             Max=max(Petal.Length)) #max calculates the max and sets it equal to Max
 
